@@ -13,6 +13,7 @@ from subprocess import PIPE, Popen
 from threading import Thread
 import traceback
 import time
+import copy
 
 sys.path.append(os.path.abspath(os.path.join(
     os.path.dirname(__file__), os.path.pardir, os.path.pardir)))
@@ -159,9 +160,10 @@ def save_results(args, cases, timeout_exceeded, error_messages = []):
                 test_case_report["test_status"] = "passed"
                 case["status"] = "done"
             else:
+                messages = copy.deepcopy(error_messages)
                 message = "Output image not found"
-                error_messages.append(message)
-                test_case_report["message"] = list(error_messages)
+                messages.append(message)
+                test_case_report["message"] = list(messages)
                 case["status"] = test_case_report["test_status"]
 
             if not timeout_exceeded:
@@ -180,13 +182,13 @@ def execute_tests(args, current_conf):
     with open(os.path.join(os.path.abspath(args.output), "test_cases.json"), "r") as json_file:
         cases = json.load(json_file)
 
-    execution_script = "{tool} --library {library}".format(tool=os.path.abspath(args.tool), library=args.library)
-
     if platform.system() == "Windows":
+        execution_script = "{tool} --library {library}".format(tool=os.path.abspath(args.tool), library=args.library)
         execution_script_path = os.path.join(args.output, 'script.bat')
         with open(execution_script_path, "w") as f:
             f.write(execution_script)
     else:
+        execution_script = "export LD_LIBRARY_PATH={}; {tool} --library {library}".format(anari_path=os.path.split(args.tool)[0], tool=os.path.abspath(args.tool), library=args.library)
         execution_script_path = os.path.join(args.output, 'script.sh')
         with open(execution_script_path, "w") as f:
             f.write(execution_script)
