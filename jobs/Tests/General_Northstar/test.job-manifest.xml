@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<job-manifest enable="False">
+
+    <outpath value="{OutputDir}"/>
+
+    <execute command='python "{ResourcesDir}/simpleRender.py"'>
+        <argument>--tool "{Tool}"</argument>
+        <argument>--output "{OutputDir}"</argument>
+        <argument>--test_group General_Northstar</argument>
+        <argument>--test_cases "{TestCases}"</argument>
+        <argument>--library rpr</argument>
+    </execute>
+
+    <execute command='python "{ResourcesDir}/makeCompareReport.py"'>
+        <argument>--work_dir "{OutputDir}"</argument>
+    </execute>
+
+</job-manifest>

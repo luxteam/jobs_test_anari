@@ -1,0 +1,32 @@
+[
+    {
+        "case": "cornell_box_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "gravity_spheres_volume_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "instanced_cubes_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "textured_cube_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "random_spheres_0",
+        "status": "active",
+        "script_info": [
+        ]
+    }
+]
