@@ -49,8 +49,32 @@ def copy_test_cases(args):
         exit(-1)
 
 
+def copy_baselines(args, case, baseline_path, baseline_path_tr):
+    try:
+        copyfile(os.path.join(baseline_path_tr, case['case'] + CASE_REPORT_SUFFIX),
+                 os.path.join(baseline_path, case['case'] + CASE_REPORT_SUFFIX))
+
+        with open(os.path.join(baseline_path, case['case'] + CASE_REPORT_SUFFIX)) as baseline:
+            baseline_json = json.load(baseline)
+
+        for thumb in [''] + THUMBNAIL_PREFIXES:
+            if os.path.exists(os.path.join(baseline_path_tr, baseline_json[thumb + 'render_color_path'])):
+                copyfile(os.path.join(baseline_path_tr, baseline_json[thumb + 'render_color_path']),
+                         os.path.join(baseline_path, baseline_json[thumb + 'render_color_path']))
+    except:
+        main_logger.error('Failed to copy baseline ' +
+                                      os.path.join(baseline_path_tr, case['case'] + CASE_REPORT_SUFFIX))
+
+
 def prepare_empty_reports(args, current_conf):
     main_logger.info('Create empty report files')
+
+    baseline_path = os.path.join(args.output, os.path.pardir, os.path.pardir, os.path.pardir, 'Baseline', args.test_group)
+
+    if platform.system() == 'Windows':
+        baseline_path_tr = os.path.join('c:/TestResources', 'rpr_anari_autotests_baselines', args.test_group)
+    else:
+        baseline_path_tr = os.path.expandvars(os.path.join('$CIS_TOOLS/../TestResources', baseline_dir, args.test_group))
 
     copyfile(os.path.abspath(os.path.join(args.output, '..', '..', '..', '..', 'jobs_launcher',
                                           'common', 'img', 'error.png')), os.path.join(args.output, 'Color', 'failed.jpg'))
@@ -100,6 +124,7 @@ def prepare_empty_reports(args, current_conf):
             with open(case_path, "w") as f:
                 f.write(json.dumps([test_case_report], indent=4))
 
+        copy_baselines(args, case, baseline_path, baseline_path_tr)
     with open(os.path.join(args.output, "test_cases.json"), "w+") as f:
         json.dump(cases, f, indent=4)
 
@@ -246,6 +271,7 @@ def createArgsParser():
     parser.add_argument("--test_cases", required=True)
     parser.add_argument('--timeout', required=False, default=600)
     parser.add_argument('--library', required=True)
+    parser.add_argument('--update_refs', required=True)
 
     return parser
 
