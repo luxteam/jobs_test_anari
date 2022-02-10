@@ -149,7 +149,7 @@ def save_results(args, cases, timeout_exceeded, error_messages = []):
             test_case_report["render_color_path"] = os.path.join("Color", test_case_report["file_name"])
             test_case_report["testing_start"] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
-            images_output_path = os.path.split(args.tool)[0]
+            images_output_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "scripts")
             output_image_path = os.path.join(images_output_path, case["case"] + case.get("extension", '.png'))
             target_image_path = os.path.join(args.output, "Color", case["case"] + case.get("extension", '.png'))
 
