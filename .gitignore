@@ -1,0 +1,6 @@
+/Results/*
+*.pyc
+*.log
+Baseline/
+Work/
+.idea
