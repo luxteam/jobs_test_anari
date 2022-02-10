@@ -53,7 +53,7 @@ def prepare_empty_reports(args, current_conf):
     main_logger.info('Create empty report files')
 
     copyfile(os.path.abspath(os.path.join(args.output, '..', '..', '..', '..', 'jobs_launcher',
-                                          'common', 'img', 'error.png')), os.path.join(args.output, 'Color', 'failed.png'))
+                                          'common', 'img', 'error.png')), os.path.join(args.output, 'Color', 'failed.jpg'))
 
     with open(os.path.join(os.path.abspath(args.output), "test_cases.json"), "r") as json_file:
         cases = json.load(json_file)
@@ -113,7 +113,7 @@ def read_output(pipe, functions):
 
 def save_results(args, cases, timeout_exceeded, error_messages = []):
     for case in cases:
-        if case["test_status"] == "skipped":
+        if case["status"] == "skipped":
             continue
 
         with open(os.path.join(args.output, case["case"] + CASE_REPORT_SUFFIX), "r") as file:
@@ -123,25 +123,25 @@ def save_results(args, cases, timeout_exceeded, error_messages = []):
             test_case_report["testing_start"] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
             images_output_path = os.path.split(args.tool)[0]
-            image_path = os.path.join(images_output_path, case["case"] + case.get("extension", '.png'))
+            output_image_path = os.path.join(images_output_path, case["case"] + case.get("extension", '.png'))
+            target_image_path = os.path.join(args.output, "Color", case["case"] + case.get("extension", '.png'))
 
-            if os.path.exists(image_path):
-                os.remove(os.path.join(args.output, "Color", case["case"] + ".png"))
-                copyfile(image_path, os.path.join(args.output, "Color", case["case"] + case.get("extension", '.png')))
+            if os.path.exists(output_image_path):
+                copyfile(output_image_path, target_image_path)
 
                 test_case_report["test_status"] = "passed"
+                case["status"] = "done"
             else:
                 message = "Output image not found"
                 error_messages.append(message)
                 test_case_report["message"] = list(error_messages)
+                case["status"] = test_case_report["test_status"]
 
             if not timeout_exceeded:
                 test_case_report["group_timeout_exceeded"] = False
 
         with open(os.path.join(args.output, case["case"] + CASE_REPORT_SUFFIX), "w") as file:
             json.dump([test_case_report], file, indent=4)
-
-        case["status"] = test_case_report["test_status"]
 
     with open(os.path.join(args.output, "test_cases.json"), "w") as file:
         json.dump(cases, file, indent=4)
@@ -153,9 +153,7 @@ def execute_tests(args, current_conf):
     with open(os.path.join(os.path.abspath(args.output), "test_cases.json"), "r") as json_file:
         cases = json.load(json_file)
 
-    os.makedirs(args.output)
-
-    execution_script = "{tool} --library {library}".format(library=args.library)
+    execution_script = "{tool} --library {library}".format(tool=os.path.abspath(args.tool), library=args.library)
 
     execution_script_path = os.path.join(args.output, "run.bat")
 
@@ -182,6 +180,8 @@ def execute_tests(args, current_conf):
     check_time = 10
 
     error_messages = []
+
+    case_finished = False
 
     try:
         while not case_finished:
