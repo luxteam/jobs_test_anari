@@ -71,8 +71,10 @@ def prepare_empty_reports(args, current_conf):
 
     baseline_path = os.path.join(args.output, os.path.pardir, os.path.pardir, os.path.pardir, 'Baseline', args.test_group)
 
+    baseline_dir = 'rpr_anari_autotests_baselines'
+
     if platform.system() == 'Windows':
-        baseline_path_tr = os.path.join('c:/TestResources', 'rpr_anari_autotests_baselines', args.test_group)
+        baseline_path_tr = os.path.join('c:/TestResources', baseline_dir, args.test_group)
     else:
         baseline_path_tr = os.path.expandvars(os.path.join('$CIS_TOOLS/../TestResources', baseline_dir, args.test_group))
 
