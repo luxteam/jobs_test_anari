@@ -182,10 +182,15 @@ def execute_tests(args, current_conf):
 
     execution_script = "{tool} --library {library}".format(tool=os.path.abspath(args.tool), library=args.library)
 
-    execution_script_path = os.path.join(args.output, "run.bat")
-
-    with open(execution_script_path, "w") as f:
-        f.write(execution_script)
+    if platform.system() == "Windows":
+        execution_script_path = os.path.join(args.output, 'script.bat')
+        with open(execution_script_path, "w") as f:
+            f.write(execution_script)
+    else:
+        execution_script_path = os.path.join(args.output, 'script.sh')
+        with open(execution_script_path, "w") as f:
+            f.write(execution_script)
+        os.system('chmod +x {}'.format(execution_script_path))
 
     p = psutil.Popen(execution_script_path, shell=True,
                      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
