@@ -149,7 +149,7 @@ def save_results(args, cases, timeout_exceeded, error_messages = []):
             test_case_report["render_color_path"] = os.path.join("Color", test_case_report["file_name"])
             test_case_report["testing_start"] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
-            images_output_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "scripts")
+            images_output_path = os.path.split(args.tool)[0]
             output_image_path = os.path.join(images_output_path, case["case"] + case.get("extension", '.png'))
             target_image_path = os.path.join(args.output, "Color", case["case"] + case.get("extension", '.png'))
 
@@ -191,6 +191,8 @@ def execute_tests(args, current_conf):
         with open(execution_script_path, "w") as f:
             f.write(execution_script)
         os.system('chmod +x {}'.format(execution_script_path))
+
+    os.chdir(os.path.split(args.tool)[0])
 
     p = psutil.Popen(execution_script_path, shell=True,
                      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
