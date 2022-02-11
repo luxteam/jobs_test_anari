@@ -132,9 +132,10 @@ def prepare_empty_reports(args, current_conf):
         json.dump(cases, f, indent=4)
 
 
-def read_output(pipe, function):
+def read_output(pipe, functions):
     for line in iter(pipe.readline, b''):
-        function(line.decode('utf-8'))
+        for function in functions:
+            function(line.decode('utf-8'))
     pipe.close()
 
 
@@ -173,7 +174,7 @@ def save_results(args, cases, render_time, timeout_exceeded, error_messages = []
                 test_case_report["message"] = list(messages)
                 case["status"] = test_case_report["test_status"]
 
-            if timeout_exceeded:
+            if not timeout_exceeded:
                 test_case_report["group_timeout_exceeded"] = False
 
         with open(os.path.join(args.output, case["case"] + CASE_REPORT_SUFFIX), "w") as file:
@@ -208,9 +209,10 @@ def execute_tests(args, current_conf):
     p = psutil.Popen(execution_script_path, shell=False,
                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
+    outs = []
     queue = Queue()
 
-    stdout_thread = Thread(target=read_output, args=(p.stdout, queue.put))
+    stdout_thread = Thread(target=read_output, args=(p.stdout, [queue.put, outs.append]))
 
     start_time = time.time()
 
@@ -262,6 +264,8 @@ def execute_tests(args, current_conf):
                 case_finished = True
 
     except Exception as e:
+        main_logger.error(e)
+
         try:
             for child in reversed(p.children(recursive=True)):
                 child.terminate()
