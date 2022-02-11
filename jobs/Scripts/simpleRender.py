@@ -119,8 +119,8 @@ def prepare_empty_reports(args, current_conf):
                     main_logger.error("Can't create img stub: {}".format(str(err)))
             else:
                 test_case_report['test_status'] = 'error'
-                test_case_report['file_name'] = 'failed.png'
-                test_case_report['render_color_path'] = os.path.join('Color', 'failed.png')
+                test_case_report['file_name'] = 'failed.jpg'
+                test_case_report['render_color_path'] = os.path.join('Color', 'failed.jpg')
 
             case_path = os.path.join(args.output, case['case'] + CASE_REPORT_SUFFIX)
 
@@ -146,8 +146,6 @@ def save_results(args, cases, timeout_exceeded, error_messages = []):
 
         with open(os.path.join(args.output, case["case"] + CASE_REPORT_SUFFIX), "r") as file:
             test_case_report = json.loads(file.read())[0]
-            test_case_report["file_name"] = case["case"] + case.get("extension", '.png')
-            test_case_report["render_color_path"] = os.path.join("Color", test_case_report["file_name"])
             test_case_report["testing_start"] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
             images_output_path = os.path.split(args.tool)[0]
@@ -156,6 +154,9 @@ def save_results(args, cases, timeout_exceeded, error_messages = []):
 
             if os.path.exists(output_image_path):
                 copyfile(output_image_path, target_image_path)
+
+                test_case_report["file_name"] = case["case"] + case.get("extension", '.png')
+                test_case_report["render_color_path"] = os.path.join("Color", test_case_report["file_name"])
 
                 test_case_report["test_status"] = "passed"
                 case["status"] = "done"
