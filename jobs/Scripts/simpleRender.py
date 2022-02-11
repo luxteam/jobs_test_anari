@@ -106,7 +106,7 @@ def prepare_empty_reports(args, current_conf):
 
             if case['status'] == 'skipped':
                 test_case_report['test_status'] = 'skipped'
-                test_case_report['file_name'] = case['case'] + case.get('extension', '.png')
+                test_case_report['file_name'] = case['case'] + case.get('extension', '.jpg')
                 test_case_report['render_color_path'] = os.path.join('Color', test_case_report['file_name'])
                 test_case_report['group_timeout_exceeded'] = False
 
@@ -114,7 +114,7 @@ def prepare_empty_reports(args, current_conf):
                     skipped_case_image_path = os.path.join(args.output, 'Color', test_case_report['file_name'])
                     if not os.path.exists(skipped_case_image_path):
                         copyfile(os.path.join(args.output, '..', '..', '..', '..', 'jobs_launcher', 
-                            'common', 'img', "skipped.png"), skipped_case_image_path)
+                            'common', 'img', "skipped.jpg"), skipped_case_image_path)
                 except OSError or FileNotFoundError as err:
                     main_logger.error("Can't create img stub: {}".format(str(err)))
             else:
