@@ -184,6 +184,8 @@ def execute_tests(args, current_conf):
         cases = json.load(json_file)
 
     if platform.system() == "Windows":
+        import win32gui
+        import win32con
         execution_script = "{tool} --library {library}".format(tool=os.path.abspath(args.tool), library=args.library)
         execution_script_path = os.path.join(args.output, 'script.bat')
         with open(execution_script_path, "w") as f:
@@ -237,6 +239,15 @@ def execute_tests(args, current_conf):
                     message = "Abort tests execution due to timeout"
                     error_messages.append(message)
                     raise Exception(message)
+
+                if platform.system() == "Windows":
+                    crash_window = win32gui.FindWindow(None, "Microsoft Visual C++ Runtime Library")
+
+                    if crash_window:
+                        message = "Crash window was found"
+                        error_messages.append(message)
+                        win32gui.PostMessage(crash_window, win32con.WM_CLOSE, 0, 0)
+                        raise Exception(message)
             else:
                 main_logger.info("Render finished")
 
