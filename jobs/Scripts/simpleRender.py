@@ -132,20 +132,26 @@ def prepare_empty_reports(args, current_conf):
         json.dump(cases, f, indent=4)
 
 
-def read_output(pipe, functions):
+def read_output(pipe, function):
     for line in iter(pipe.readline, b''):
-        for function in functions:
-            function(line.decode('utf-8'))
+        function(line.decode('utf-8'))
     pipe.close()
 
 
-def save_results(args, cases, timeout_exceeded, error_messages = []):
+def save_results(args, cases, render_time, timeout_exceeded, error_messages = []):
+    render_time_set = False
+
     for case in cases:
         if case["status"] == "skipped":
             continue
 
         with open(os.path.join(args.output, case["case"] + CASE_REPORT_SUFFIX), "r") as file:
             test_case_report = json.loads(file.read())[0]
+
+            if not render_time_set:
+                test_case_report["render_time"] = render_time
+                render_time_set = True
+
             test_case_report["testing_start"] = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
             images_output_path = os.path.split(args.tool)[0]
@@ -167,7 +173,7 @@ def save_results(args, cases, timeout_exceeded, error_messages = []):
                 test_case_report["message"] = list(messages)
                 case["status"] = test_case_report["test_status"]
 
-            if not timeout_exceeded:
+            if timeout_exceeded:
                 test_case_report["group_timeout_exceeded"] = False
 
         with open(os.path.join(args.output, case["case"] + CASE_REPORT_SUFFIX), "w") as file:
@@ -199,21 +205,17 @@ def execute_tests(args, current_conf):
 
     os.chdir(os.path.split(args.tool)[0])
 
-    p = psutil.Popen(execution_script_path, shell=True,
-                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = psutil.Popen(execution_script_path, shell=False,
+                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-    outs = []
-    errs = []
     queue = Queue()
 
-    stdout_thread = Thread(target=read_output, args=(p.stdout, [queue.put, outs.append]))
-    stderr_thread = Thread(target=read_output, args=(p.stderr, [queue.put, errs.append]))
+    stdout_thread = Thread(target=read_output, args=(p.stdout, queue.put))
 
     start_time = time.time()
 
-    for thread in (stdout_thread, stderr_thread):
-        thread.daemon = True
-        thread.start()
+    stdout_thread.daemon = True
+    stdout_thread.start()
 
     timeout = args.timeout
     check_time = 10
@@ -257,8 +259,6 @@ def execute_tests(args, current_conf):
                         error_messages.append(message)
                         raise Exception(message)
 
-                render_time = time.time() - start_time
-
                 case_finished = True
 
     except Exception as e:
@@ -271,16 +271,14 @@ def execute_tests(args, current_conf):
 
         rc = -1
     finally:
-        save_results(args, cases, timeout <= 0, error_messages=error_messages)
+        render_time = time.time() - start_time
+        save_results(args, cases, render_time, timeout <= 0, error_messages=error_messages)
 
         log_path = os.path.join(args.output, "renderTool.log")
 
-        outs = " ".join(outs)
-        errs = " ".join(errs)
-
         with open(log_path, "a", encoding="utf-8") as file:
-            file.write(outs)
-            file.write(errs)
+            while not queue.empty():
+                file.write(queue.get())
 
     return rc
 
