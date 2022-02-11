@@ -198,7 +198,7 @@ def execute_tests(args, current_conf):
         with open(execution_script_path, "w") as f:
             f.write(execution_script)
     else:
-        execution_script = "export LD_LIBRARY_PATH={anari_path}; {tool} --library {library}".format(anari_path=os.path.split(args.tool)[0], tool=os.path.abspath(args.tool), library=args.library)
+        execution_script = "#!/bin/sh\nexport LD_LIBRARY_PATH={anari_path}; {tool} --library {library}".format(anari_path=os.path.split(args.tool)[0], tool=os.path.abspath(args.tool), library=args.library)
         execution_script_path = os.path.join(args.output, 'script.sh')
         with open(execution_script_path, "w") as f:
             f.write(execution_script)
