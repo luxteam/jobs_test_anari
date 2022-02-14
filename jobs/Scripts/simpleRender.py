@@ -72,6 +72,10 @@ def prepare_empty_reports(args, current_conf):
 
     baseline_path = os.path.join(args.output, os.path.pardir, os.path.pardir, os.path.pardir, 'Baseline', args.test_group)
 
+    if not os.path.exists(baseline_path):
+        os.makedirs(baseline_path)
+        os.makedirs(os.path.join(baseline_path, 'Color'))
+
     baseline_dir = 'rpr_anari_autotests_baselines'
 
     if platform.system() == 'Windows':
