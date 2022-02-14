@@ -1,7 +1,6 @@
 set PATH=c:\python39\;c:\python39\scripts\;%PATH%
-set TOOL=%1
-set LIBRARY="%2"
+set LIBRARY="%1"
 
 python -m pip install -r ../jobs_launcher/install/requirements.txt
 
-python build_cache.py --tool %TOOL% --library %LIBRARY%
+python build_cache.py --tool "..\Anari\anari_regression_tests.exe" --library %LIBRARY%
