@@ -58,5 +58,23 @@
         "status": "active",
         "script_info": [
         ]
+    },
+    {
+        "case": "cornell_box_quad_geom",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "texture_cube_samplers",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring",
+        "status": "active",
+        "script_info": [
+        ]
     }
 ]
