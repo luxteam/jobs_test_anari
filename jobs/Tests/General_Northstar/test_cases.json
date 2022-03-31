@@ -66,12 +66,6 @@
         ]
     },
     {
-        "case": "textured_cube_samplers_0",
-        "status": "active",
-        "script_info": [
-        ]
-    },
-    {
         "case": "cornell_box_ring_0",
         "status": "active",
         "script_info": [
