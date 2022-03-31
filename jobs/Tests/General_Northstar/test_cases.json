@@ -60,19 +60,19 @@
         ]
     },
     {
-        "case": "cornell_box_quad_geom",
+        "case": "cornell_box_quad_geom_0",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "texture_cube_samplers",
+        "case": "texture_cube_samplers_0",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_ring",
+        "case": "cornell_box_ring_0",
         "status": "active",
         "script_info": [
         ]
