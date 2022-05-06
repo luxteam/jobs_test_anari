@@ -202,7 +202,7 @@ def execute_tests(args, current_conf):
         with open(execution_script_path, "w") as f:
             f.write(execution_script)
     else:
-        if platform.system() == "Linux"
+        if platform.system() == "Linux":
             execution_script = "#!/bin/sh\nexport LD_LIBRARY_PATH={anari_path}:/usr/local/lib; {tool} --library {library}".format(
                 anari_path=os.path.split(args.tool)[0], tool=os.path.abspath(args.tool), library=args.library)
         else:
