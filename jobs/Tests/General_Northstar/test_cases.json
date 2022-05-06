@@ -28,5 +28,47 @@
         "status": "active",
         "script_info": [
         ]
+    },
+    {
+        "case": "cornell_box_directional_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_multilight_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_geom_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_0",
+        "status": "active",
+        "script_info": [
+        ]
     }
 ]
