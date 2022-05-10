@@ -1,72 +1,507 @@
 [
     {
-        "case": "cornell_box_0",
+        "case": "cornell_box",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "gravity_spheres_volume_0",
+        "case": "volume_test",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "instanced_cubes_0",
+        "case": "instanced_cubes",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "textured_cube_0",
+        "case": "textured_cube",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "random_spheres_0",
+        "case": "random_spheres",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_directional_0",
+        "case": "cornell_box_directional",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_point_0",
+        "case": "cornell_box_point",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_spot_0",
+        "case": "cornell_box_spot",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_quad_0",
+        "case": "cornell_box_quad",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_multilight_0",
+        "case": "cornell_box_multilight",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_quad_geom_0",
+        "case": "cornell_box_quad_geom",
         "status": "active",
         "script_info": [
         ]
     },
     {
-        "case": "cornell_box_ring_0",
+        "case": "cornell_box_ring",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+
+
+
+    {
+        "case": "volume_test_valueRangeRight_2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "volume_test_valueRangeLeft_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "volume_test_densityScale_5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "volume_test_densityScale_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_cylinder_geom",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_cone_geom",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_multilight",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_radiance_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_power_20",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_intensity_40",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_X_0_Y_0.98_Z_-0.16",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_X_-0.23_Y_0.98_Z_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_X_-0.23_Y_0.6_Z_-0.16",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_R_1_G_0_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_R_0_G_1_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_quad_R_0_G_0_B_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_radius_2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_radius_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_radiance_2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_radiance_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_openingAngle_4",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_openingAngle_2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_openingAngle_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_intensity_2.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_intensity_10",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_innerRadius_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_innerRadius_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_falloffAngle_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_falloffAngle_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_dirX_0_dirY_0.2_dirZ_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_dirX_0.2_dirY_0_dirZ_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_X_1_Y_0_Z_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_X_0_Y_1_Z_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_X_0_Y_0_Z_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_R_1_G_0_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_R_0_G_1_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_ring_R_0_G_0_B_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_power_100",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_openingAngle_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_openingAngle_0.4",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_intensity_40",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_intensity_10",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_falloffAngle_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_falloffAngle_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_dirX_0_dirY_0_dirZ_1.1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_dirX_0_dirY_0.1_dirZ_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_dirX_0.1_dirY_0_dirZ_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_X_0_Y_0_Z_-3",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_X_0_Y_0.1_Z_-2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_X_0.1_Y_0_Z_-2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_R_0_G_1_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_R_0_G_0_B_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_spot_X_0_Y_0.1_Z_-2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_radius_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_radius_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_radius_0.2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_radiance_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_intensity_20",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_X_0_Y_0_Z_-0.7",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_X_0_Y_0.3_Z_-1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_X_0.3_Y_0_Z_-1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_R_1_G_0_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_R_0_G_1_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_point_R_0_G_0_B_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_angularDiameter_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_angularDiameter_0.2",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_X_0_Y_0_Z_0.8",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_X_0_Y_0.2_Z_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_X_0.2_Y_0_Z_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_R_1_G_0_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_R_0_G_1_B_0",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "cornell_box_directional_R_0_G_0_B_1",
         "status": "active",
         "script_info": [
         ]
