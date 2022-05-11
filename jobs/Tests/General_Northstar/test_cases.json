@@ -1,11 +1,5 @@
 [
     {
-        "case": "cornell_box",
-        "status": "active",
-        "script_info": [
-        ]
-    },
-    {
         "case": "volume_test",
         "status": "active",
         "script_info": [
