@@ -499,5 +499,101 @@
         "status": "active",
         "script_info": [
         ]
+    },
+    {
+        "case": "camera_test_default",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_position_x",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_position_y",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_position_z",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_direction_x",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_direction_y",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_direction_z",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_up_x",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_up_y",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_up_z",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_apertureRadius_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_apertureRadius_1",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_focusDistance_3",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_focusDistance_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_imageRegion_x1_0.5_y1_0.5",
+        "status": "active",
+        "script_info": [
+        ]
+    },
+    {
+        "case": "camera_test_imageRegion_x2_0.5_y2_0.5",
+        "status": "active",
+        "script_info": [
+        ]
     }
 ]
