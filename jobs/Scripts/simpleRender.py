@@ -96,6 +96,8 @@ def prepare_empty_reports(args, current_conf):
         if case['status'] != 'done' and case['status'] != 'error':
             if case["status"] == 'inprogress':
                 case['status'] = 'active'
+            elif case["status"] == 'inprogress_observed':
+                case['status'] = 'observed'
 
             test_case_report = RENDER_REPORT_BASE.copy()
             test_case_report['test_case'] = case['case']
@@ -169,7 +171,11 @@ def save_results(args, cases, render_time, timeout_exceeded, error_messages = []
                 test_case_report["file_name"] = case["case"] + case.get("extension", '.png')
                 test_case_report["render_color_path"] = os.path.join("Color", test_case_report["file_name"])
 
-                test_case_report["test_status"] = "passed"
+                if case['status'] == "active":
+                    test_case_report["test_status"] = "passed"
+                elif case['status'] == "observed":
+                    test_case_report["test_status"] = "observed"
+
                 case["status"] = "done"
             else:
                 messages = copy.deepcopy(error_messages)
